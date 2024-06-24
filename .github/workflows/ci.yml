@@ -29,4 +29,4 @@ jobs:
           conda list
       - name: cmake-package-check
         shell: bash -el {0}
-        run: cmake-package-check Qt6 --target Qt6::Core
+        run: cmake-package-check Qt6
