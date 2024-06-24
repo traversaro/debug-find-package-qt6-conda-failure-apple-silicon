@@ -1,0 +1,27 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+jobs:
+  example-1:
+    name: Check if find_package(Qt6) works on native builds
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: ["macos-12", "macos-14"]
+    steps:
+      - uses: conda-incubator/setup-miniconda@v3
+        with:
+          auto-update-conda: true
+          miniforge-variant: Miniforge3
+      - name: Install depedendencies
+        shell: bash -el {0}
+        run: conda install cmake pkg-config ninja compilers cmake-package-check qt6-main cmake-package-check
+      - name: cmake-package-check
+        shell: bash -el {0}
+        run: cmake-package-check Qt6 --target Qt6::Core
