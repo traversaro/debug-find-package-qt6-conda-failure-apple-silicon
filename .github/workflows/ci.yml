@@ -21,7 +21,7 @@ jobs:
           miniforge-variant: Miniforge3
       - name: Install depedendencies
         shell: bash -el {0}
-        run: conda install cmake pkg-config ninja compilers cmake-package-check qt6-main cmake-package-check
+        run: conda install cmake pkg-config ninja compilers cmake-package-check qt6-main
       - name: Debug info
         shell: bash -el {0}
         run: |
